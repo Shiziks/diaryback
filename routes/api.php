@@ -38,25 +38,27 @@ use App\Http\Controllers\WaterglassController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//Route::middleware(['cors'])->group(function(){
+    Route::controller(AuthController::class)->group(function () {
+        Route::post('login', 'login');
+        Route::post('register', 'register');
+        Route::post('logout', 'logout');
+        Route::post('refresh', 'refresh');
+        Route::post('profile', 'profile');
+        Route::get('userdata', 'userData');
+        Route::get('check', 'authenticated');
+        Route::post('edituserdata', 'edituserdata');
+        Route::post('changepassword', 'changepassword');
+        Route::get('getuser/{email}', 'getuser');
+        Route::post('makeadmin', 'makeadmin');
+        Route::post('removeadmin', 'removeadmin');
+        Route::get('getallroles', 'getallroles');
+    
+        //Route::get('checkpassword/{id}', 'checkpassword');
+    
+    });
+//});
 
-Route::controller(AuthController::class)->group(function () {
-    Route::post('login', 'login');
-    Route::post('register', 'register');
-    Route::post('logout', 'logout');
-    Route::post('refresh', 'refresh');
-    Route::post('profile', 'profile');
-    Route::get('userdata', 'userData');
-    Route::get('check', 'authenticated');
-    Route::post('edituserdata', 'edituserdata');
-    Route::post('changepassword', 'changepassword');
-    Route::get('getuser/{email}', 'getuser');
-    Route::post('makeadmin', 'makeadmin');
-    Route::post('removeadmin', 'removeadmin');
-    Route::get('getallroles', 'getallroles');
-
-    //Route::get('checkpassword/{id}', 'checkpassword');
-
-});
 
 
 //EMAIL VERIFY
